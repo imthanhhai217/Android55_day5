@@ -1,6 +1,9 @@
 package com.devpro.android55_day5;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -38,7 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
         ContactAdapter contactAdapter = new ContactAdapter(mDataContact);
         lvContact.setAdapter(contactAdapter);
-
+        lvContact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("TAG", "onItemClick: "+mDataContact.get(position).toString());
+            }
+        });
     }
 
     private void initData() {
